@@ -1,0 +1,10 @@
+# Travaux pratique Gestion de projet Git 
+
+Auteur : Thomas STOSSKOPF 
+
+## Introduction 
+
+Ici nous débuterons les travaux pratiques d'ingénierie logicielle et science reproductible. 
+Notre premier tp consiste à créer un projet Git. 
+
+
