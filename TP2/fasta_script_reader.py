@@ -30,8 +30,8 @@ def adn_read(fastafile):
                               " and column " + str(column_counter) + " for sequence " + header[1:])
 
 
-print(sys.argv)
-for arg in sys.argv[1:]:
-    adn_read(arg)
+#print(sys.argv)
+#for arg in sys.argv[1:]:
+#    adn_read(arg)
 
 
