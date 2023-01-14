@@ -3,7 +3,7 @@ This script will go in every line of a
 fasta file and find if a letter is a nucleotide or not
 it will also give the length of every sequence
 """
-import argparse
+
 import sys
 
 # def create_parser():
@@ -81,7 +81,5 @@ def is_fasta(file_path):
         return bool(first_line.startswith('>'))
 
 for arg in sys.argv[1:]:
-
+    is_fasta(arg)
     adn_read(arg)
-
-print(adn_read("exemple.fasta"))
