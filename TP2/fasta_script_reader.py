@@ -6,24 +6,24 @@ it will also give the length of every sequence
 import argparse
 import sys
 
-def create_parser():
-    """ Declares new parser and adds parser arguments """
-    program_description=''' reading fasta file and checking sequence format '''
-    parser =  argparse.ArgumentParser(add_help=True,description=program_description)
-    parser.add_argument('-i','--inputfile',default=sys.stdin,
-    help="required input file in fasta format",type=argparse.FileType("r"),required=True)
-    return parser
-def main():
-    """ Main function for reading fasta file and checking sequence format """
-    parser = create_parser()
-    args = parser.parse_args()
-    args = args.__dict__
-    print(args["inputfile"])
-    fasta_sequence = args["inputfile"].read()
-    print(fasta_sequence)
+# def create_parser():
+#     """ Declares new parser and adds parser arguments """
+#     program_description=''' reading fasta file and checking sequence format '''
+#     parser =  argparse.ArgumentParser(add_help=True,description=program_description)
+#     parser.add_argument('-i','--inputfile',default=sys.stdin,
+#     help="required input file in fasta format",type=argparse.FileType("r"),required=True)
+#     return parser
+# def main():
+#     """ Main function for reading fasta file and checking sequence format """
+#     parser = create_parser()
+#     args = parser.parse_args()
+#     args = args.__dict__
+#     print(args["inputfile"])
+#     fasta_sequence = args["inputfile"].read()
+#     print(fasta_sequence)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
 def adn_read(fastafile):
     """function to open a fasta file and find if a
     letter is or not a nucleotide"""
@@ -80,7 +80,8 @@ def is_fasta(file_path):
         first_line = file.readline()
         return bool(first_line.startswith('>'))
 
+for arg in sys.argv[1:]:
 
-
+    adn_read(arg)
 
 print(adn_read("exemple.fasta"))
