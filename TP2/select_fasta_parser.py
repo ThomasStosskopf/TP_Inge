@@ -1,3 +1,4 @@
+"""script to create parser"""
 import argparse
 import sys
 
