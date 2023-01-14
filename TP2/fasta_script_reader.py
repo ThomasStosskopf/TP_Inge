@@ -13,11 +13,12 @@ def adn_read(fastafile):
         # initialize variable to keep track of the header we encounter
         header = ""
         current_sequence = ""
-        # Iterate through each line in the files (we didn't open the entire file in one variable this time)
+        # Iterate through each line in the files
         for line in fasta_file:
             # for each line, add +1 to the line_counter variable
             line_counter += 1
-            # if the line start with ">" we start this 'if' statement, and it means that it's a header
+            # if the line start with ">" we start this 'if' statement
+            # it means it's a header
             if line.startswith(">"):
                 # Add the line in our dictionary as a key
                 header = line.strip()
@@ -35,6 +36,7 @@ def adn_read(fastafile):
                 for char in line:
                     column_counter += 1
                     if char not in NTP_LIST:
+                        print("The sequence has ",len(line), " nucleotides")
                         print(char + " is not a nucl in line " + str(line_counter) +
                               " and column " + str(column_counter) + " for sequence " + header[1:] )
 
