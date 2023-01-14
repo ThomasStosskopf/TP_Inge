@@ -71,6 +71,16 @@ def adn_read(fastafile):
                         print(char + " is not a nucleotide in line " + str(line_counter) +
                               " and column " + str(column_counter) + " for sequence " + header[1:] )
 
+def is_fasta(file_path):
+    """
+    function to analyse if a file is a fasta file
+    or not
+    """
+    with open(file_path, 'r', encoding="utf-8") as file:
+        first_line = file.readline()
+        return bool(first_line.startswith('>'))
+
+
 
 
 print(adn_read("exemple.fasta"))
