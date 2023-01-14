@@ -1,13 +1,14 @@
-import sys
 
-# function to open a fasta file and
+
 def adn_read(fastafile):
+    """function to open a fasta file and find if a
+    letter is or not a nucleotide"""
     # create a list with the letters that we consider as nucleotid
-    NTP_LIST = ["A", "C", "G", "T"]
+    nucl_list = ["A", "C", "G", "T"]
     # create an empty dictonary to store the sequence and their headers
     sequence_dict = {}
     # open the fasta file
-    with open(fastafile, "r") as fasta_file:
+    with open(fastafile, "r", encoding="utf-8") as fasta_file:
         # Initialize a line counter... to count lines !
         line_counter = 0
         # initialize variable to keep track of the header we encounter
@@ -27,22 +28,25 @@ def adn_read(fastafile):
                 if current_sequence:
                     sequence_dict[line.strip()] = current_sequence
                     current_sequence = ""
-
         # return sequence_dict
             else:
+                # remove '\n' at the end of the line
                 line = line.strip()
+                # make all the letter in caps in the line
                 line = line.upper()
+                # counter to count the column where there is no nucleotide
                 column_counter = 0
                 for char in line:
+                    # add +1 to the counter for every char encounter in the line
                     column_counter += 1
-                    if char not in NTP_LIST:
-                        print("The sequence has ",len(line), " nucleotides")
-                        print(char + " is not a nucl in line " + str(line_counter) +
+                    if char not in nucl_list:
+                        # print the number of nucleotide in the sequence
+                        print("The sequence ", header[1:],"has ",len(line), " nucleotides")
+                        # print a message to indicate in which position
+                        # the letter is not a nucleotide
+                        print(char + " is not a nucleotide in line " + str(line_counter) +
                               " and column " + str(column_counter) + " for sequence " + header[1:] )
 
-#print(sys.argv)
-#for arg in sys.argv[1:]:
-#    adn_read(arg)
 
 
 print(adn_read("exemple.fasta"))
