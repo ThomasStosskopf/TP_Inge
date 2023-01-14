@@ -1,4 +1,8 @@
-
+"""
+This script will go in every line of a
+fasta file and find if a letter is a nucleotide or not
+it will also give the length of every sequence
+"""
 
 def adn_read(fastafile):
     """function to open a fasta file and find if a
