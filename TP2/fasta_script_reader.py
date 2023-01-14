@@ -4,6 +4,7 @@ fasta file and find if a letter is a nucleotide or not
 it will also give the length of every sequence
 """
 import sys
+import os
 
 def adn_read(fastafile):
     """function to open a fasta file and find if a
@@ -61,11 +62,20 @@ def is_fasta(file_path):
         first_line = file.readline()
         return bool(first_line.startswith('>'))
 
+# add arg to add file to analyse
 for arg in sys.argv[1:]:
-    if is_fasta(arg) is False:
-        print(arg, " is not a fasta file")
-        print("__________________________________________")
+    # if the path exist
+    if os.path.exists(arg):
+        # we check fist if it is a fasta file or not
+        if is_fasta(arg) is False:
+            print(arg, " is not a fasta file")
+            print("____________________________________________________________________")
+        # if is we can use adn_read() function to analyse
+        else:
+            print("Results for ", arg)
+            adn_read(arg)
+            print("____________________________________________________________________")
+    # if the path doesn't exist, we just say it to the user
     else:
-        print("Results for ", arg)
-        adn_read(arg)
-        print("__________________________________________")
+        print(arg, " doesn't exist")
+        print("____________________________________________________________________")
