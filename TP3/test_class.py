@@ -1,3 +1,6 @@
+"""
+Script to
+"""
 class Animal():
     def __init__(self, species, age, diet) -> None:
         self.species = species
@@ -50,3 +53,10 @@ if __name__ == "__main__":
     # print(animal1)
     print(animal2)
     # print(animal3)
+
+
+    # pouvoir ajouter un enfant dans un animal
+    # afficher tous les descendants d'un animal
+    # si j'ia un animal qui a un ensemble d'animal comme descendant
+    # on veut aussi les descendants de ses descendants
+    # l'animal est capable de connaître sa mère
