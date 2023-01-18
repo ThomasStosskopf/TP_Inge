@@ -62,20 +62,21 @@ def is_fasta(file_path):
         first_line = file.readline()
         return bool(first_line.startswith('>'))
 
-# add arg to add file to analyse
-for arg in sys.argv[1:]:
-    # if the path exist
-    if os.path.exists(arg):
-        # we check fist if it is a fasta file or not
-        if is_fasta(arg) is False:
-            print(arg, " is not a fasta file")
-            print("____________________________________________________________________")
-        # if is we can use adn_read() function to analyse
+if __name__ == "__main__":
+    # add arg to add file to analyse
+    for arg in sys.argv[1:]:
+        # if the path exist
+        if os.path.exists(arg):
+            # we check fist if it is a fasta file or not
+            if is_fasta(arg) is False:
+                print(arg, " is not a fasta file")
+                print("____________________________________________________________________")
+            # if is we can use adn_read() function to analyse
+            else:
+                print("Results for ", arg)
+                adn_read(arg)
+                print("____________________________________________________________________")
+        # if the path doesn't exist, we just say it to the user
         else:
-            print("Results for ", arg)
-            adn_read(arg)
+            print(arg, " doesn't exist")
             print("____________________________________________________________________")
-    # if the path doesn't exist, we just say it to the user
-    else:
-        print(arg, " doesn't exist")
-        print("____________________________________________________________________")
