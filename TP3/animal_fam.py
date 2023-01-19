@@ -8,7 +8,7 @@ class Animal():
     """
     class animal where we define general stuff about animal
     """
-    def __init__(self, species, age, diet) -> None:
+    def __init__(self, species, age, diet, mother = "Thomas <3") -> None:
         """
         we define here attribute of our animal class
         :param species: the species
@@ -20,7 +20,7 @@ class Animal():
         self.diet = diet
         self.foot = 2
         self.children = [None]
-        self.mother = "Thomas <3"
+        self.mother = mother
 
     def __str__(self) -> str:
         """if we do a print on animal, it will print some animal's features"""
@@ -40,6 +40,9 @@ class Animal():
             self.children.remove(None)
         return self.children.append(child.name)
 
+    def add_mother(self, mommy):
+        """function to add a mother"""
+        if self.children
 
 class Homme(Animal):
     """class for the species Homme"""
@@ -74,13 +77,17 @@ class Dog(Animal):
             + "\nname : " + self.name +"\n"+\
             "______________________\n"+ super().__str__()
 
+
+
 if __name__ == "__main__":
-    animal0 = Dog(10, "Boby")
-    animal1 = Dog(1, "Martel")
-    Dog3 = Dog(5, "Hakam")
-    animal1.add_children(Dog3)
-    animal1.add_children(animal0)
-    print(animal1)
+    Dog0 = Dog(10, "Boby")
+    Dog1 = Dog(8, "Martel")
+    Dog3 = Dog(8, "Hakam")
+    Dog4 = Dog(7, "Joelle")
+    Dog0.add_children(Dog3)
+    Dog0.add_children(Dog1)
+    print(Dog0)
+
 
 
     # pouvoir ajouter un enfant dans un animal
