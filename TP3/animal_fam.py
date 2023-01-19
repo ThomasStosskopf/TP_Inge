@@ -33,9 +33,12 @@ class Animal():
 
     def add_children(self, child):
         """function to add child to an animal"""
+        # In this function, child is an object,
+        # We take the attribute name from or object
+        # and we put this attribute in our list of children
         if self.children[0] is None:
             self.children.remove(None)
-        return self.children.append(child)
+        return self.children.append(child.name)
 
 
 class Homme(Animal):
@@ -59,7 +62,7 @@ class Snake(Animal):
 class Dog(Animal):
     """Dog class to define a new species : dog"""
     def __init__(self, age, name) -> None:
-        """function to init a dog with default parameters"""
+        """function to init a dog with default features"""
         super().__init__("Dog", age, "carnivore")
         self.age = age
         self.name = name
@@ -74,7 +77,9 @@ class Dog(Animal):
 if __name__ == "__main__":
     animal0 = Dog(10, "Boby")
     animal1 = Dog(1, "Martel")
-    animal1.add_children("Boby")
+    Dog3 = Dog(5, "Hakam")
+    animal1.add_children(Dog3)
+    animal1.add_children(animal0)
     print(animal1)
 
 
