@@ -22,6 +22,8 @@ class Animal():
         self.children = [None]
         self.mother = mother
 
+
+
     def __str__(self) -> str:
         """if we do a print on animal, it will print some animal's features"""
         return "Species : " + self.species + "\n" \
@@ -40,9 +42,12 @@ class Animal():
             self.children.remove(None)
         return self.children.append(child.name)
 
-    def add_mother(self, mommy):
+    def add_mother(self,child ,mommy):
         """function to add a mother"""
-        if self.children
+        for element in self.children:
+            if element == child.name:
+                child.mother = mommy.name
+
 
 class Homme(Animal):
     """class for the species Homme"""
@@ -86,7 +91,11 @@ if __name__ == "__main__":
     Dog4 = Dog(7, "Joelle")
     Dog0.add_children(Dog3)
     Dog0.add_children(Dog1)
+    for kids in Dog0.children:
+        if kids == Dog1.name:
+            Dog0.add_mother(Dog1,Dog0)
     print(Dog0)
+    print(Dog1)
 
 
 
