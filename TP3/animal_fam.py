@@ -82,7 +82,7 @@ class Dog(Animal):
             + "\nname : " + self.name +"\n"+\
             "______________________\n"+ super().__str__()
 
-#comment test
+# TEST HERE TO ADD WITHOUT PASSWOD
 
 if __name__ == "__main__":
     Dog0 = Dog(10, "Boby")
