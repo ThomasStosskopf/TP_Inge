@@ -22,10 +22,10 @@ class Animal:
         self.species: str = species
         self.age: float = age
         self.diet: str = diet
-        self.children: List[str] = []
+        # self.children: List[str] = []
         self.mother: str = mother
-        self.child_id: List = []
-        """child_id is a list of the id of the variable in memory"""
+        self.children: List = []
+        self.child_objt: List = []
         self.descendent: List = []
 
     def __str__(self) -> str:
@@ -35,8 +35,8 @@ class Animal:
                f"diet: {self.diet}\n"\
                f"Mother: {self.mother}\n"\
                f"Children: {str(self.children)}\n"\
-               f"child memory path:  {str(self.child_id)}\n"\
                f"Descendent: {str(self.descendent)}"
+               # f"child memory path:  {str(self.child_id)}\n"\
 
     def add_children(self, child):
         """
@@ -45,10 +45,10 @@ class Animal:
         and we put this attribute in our list of children
         We take the attribute name from or object.
         """
-        self.children.append(child.name)
-        self.child_id.append(child)
-        self.add_mother(child,self)
-        self.add_descendent(child)
+        self.children.append(child) #.name)
+        self.child_objt.append(child)
+        self.add_mother(child, self)
+        # self.add_descendent(child)
 
     def add_mother(self, child, mommy):
         """add_mother adds a mother to an Animal object.
@@ -60,79 +60,25 @@ class Animal:
             if element == child.name:
                 child.mother = mommy.name
 
-    def add_descendent(self, child):
+    def add_descendent(self):
         """function to add descendent in the list"""
+        all_childrens = [child for child in self.child_objt]
+        for child in self.child_objt:
+            all_childrens.append(child.add_descendent())
+        # explode list of lists created by the above loop
+        lst = []
+        for child in all_childrens:
+            if isinstance(child, List):
+                lst += child
+            else:
+                lst.append(child)
+        # all_childrens = [*child if isinstance(child, List) else child for child in all_childrens]
+        # all_childrens = [child.name for child in all_childrens]
+        # lst = [child.name for child in lst]
+        for objt in lst:
+            self.descendent.append(objt.name)
 
-
-        for index in range(len(self.child_id)):
-            self.descendent.append(self.children[index])
-            self.descendent.append(child.add_descendent(child))
         return self.descendent
-
-    # def retrieve_children(self, input_animal) -> None:
-    #     """ retrieve_children returns all children object into a List"""
-    #     descendent = []
-    #     children = input_animal.descendent
-    #     for child in children:
-    #         pass
-    #         # descendent.append(child.)
-    #     flag = True
-    #     while flag:
-    #         for child in children:
-    #             descendent.append(child)
-    #     # animal -> [child1,child2]
-    #     #     -> child1 -> [child12, child13]
-    #     for child in children:
-    #         descendent.append(child)
-    #         foobar = child.descendent
-    #         while len(foobar) < 1:
-    #             descendent.append(*child.descendent)
-    #             pass # foobar[:]
-
-
-    # def get_children(self):
-    #     return self.descendent
-    #
-    # def get_descendence_list(self, animal):
-    #     first_level_children = animal.descendent
-    #     children_list = [first_level_children]
-    #     while len(children_list)>1:
-    #         children_list.append(*self.get_descendence_list(animal))
-    #         pass # first_level_children
-    #     return children_list
-# Function for nth Fibonacci number
-
-
-# Driver Program
-# print(Fibonacci(9))
-
-# This code is contributed by Saket Modi
-# then corrected and improved by Himanshu Kanojiya
-
- # """
- #        Recursively adds all descendants of the animal to a list
- #        """
- #        descendants = []
- #        for child_id in self.child_id:
- #            child = None
- #            for obj in gc.get_objects():
- #                if id(obj) == child_id:
- #                    child = obj
- #                    break
- #            if child is None:
- #                continue
- #            descendants.append(child)
- #            descendants.extend(child.add_descendents())
- #        return descendants
-
-
-
-
-
-
-
-
-
 
 
 
@@ -175,7 +121,7 @@ class Dog(Animal):
 # TEST HERE
 
 if __name__ == "__main__":
-    Dog0 = Dog(age=10,name= "Boby")
+    Dog0 = Dog(age=10, name= "Boby")
     Dog1 = Dog(age=8, name="Martel")
     Dog3 = Dog(age=8, name="Hakam")
     Dog4 = Dog(age=7, name="Joelle")
@@ -183,52 +129,15 @@ if __name__ == "__main__":
     Dog0.add_children(Dog3)
     Dog0.add_children(Dog1)
     Dog1.add_children(Dog5)
+    lst = Dog0.add_descendent()  #[0]
+    print(f"my list: {lst}")
+    lst = [child.name for child in lst]
+
     print(Dog0)
-    print(Dog1)
-    print(Dog3)
-    print(Dog5)
-
-    # bob = {
-    #     'mother': ['thomas'],
-    #     'child': []
-    # }
-    #
-    # francis = {
-    #     'mother': ['thomas'],
-    #     'child': [bob]
-    # }
-    #
-    # lucas = {
-    #     'mother': ['thomas'],
-    #     'child': [francis]
-    # }
-
-    # def return_all_fib(n=15):
-    #     def Fibonacci(n):
-    #         # Check if input is 0 then it will print incorrect input
-    #         if n < 0:
-    #             print("Incorrect input")
-    #         # Check if n is 0 then it will return 0
-    #         elif n == 0:
-    #             return 0
-    #         # Check if n is 1,2 it will return 1
-    #         elif n == 1 or n == 2:
-    #             return 1
-    #         else:
-    #             return Fibonacci(n - 1) + Fibonacci(n - 2)
-    #     return [Fibonacci()]
-
-    # def get_child(dog: Dict):
-    #     if dog['child']
-    #     return dog['child']
-    # dogs = []
-    # while new_children is not None:
-    #     dogs.append()
-    #     new_children = get_child(child)
-    #     return [dog.get_children()]
-    # def get_child(dog):
-    #         return []
-    #     else
+    # print(Dog1)
+    # print(Dog3)
+    # print(Dog5)
+    #print(f"my list: {lst}")
 
 
     # pouvoir ajouter un enfant dans un animal
