@@ -4,6 +4,7 @@ Script for training our skills on using class
 We can create animals, that are define by their species, diet
 Every animal can have a parent and children
 """
+
 class Animal():
     """
     class animal where we define general stuff about animal
@@ -18,19 +19,20 @@ class Animal():
         self.species = species
         self.age = age
         self.diet = diet
-        self.foot = 2
         self.children = [None]
         self.mother = mother
-        self.descendent = None
+        # a list of the id of the variable in memory
+        self.child_id = []
+        self.descendent = [None]
 
     def __str__(self) -> str:
         """if we do a print on animal, it will print some animal's features"""
         return "Species : " + self.species + "\n" \
             +"age : " + str(self.age) + "\n" \
             +"diet : "+ self.diet + "\n"\
-            +"Foot : "+ str(self.foot) + "\n"\
             +"Mother : " + self.mother + "\n"\
             + "Children : " + str(self.children) + "\n"\
+            + "child memory path : " + str(self.child_id) +"\n"\
             + "Descendent : " + str(self.descendent)
 
     def add_children(self, child):
@@ -41,7 +43,9 @@ class Animal():
         if self.children[0] is None:
             self.children.remove(None)
         self.children.append(child.name)
+        self.child_id.append(id(child))
         self.add_mother(child,self)
+        self.add_descendent()
 
     def add_mother(self,child ,mommy):
         """function to add a mother
@@ -52,6 +56,18 @@ class Animal():
         for element in self.children:
             if element == child.name:
                 child.mother = mommy.name
+
+    def add_descendent(self):
+        """function to add descendent in the list"""
+        for elem in self.child_id:
+            for kids in self.children:
+                self.descendent.append(kids)
+
+        return self.descendent
+
+
+
+
 
 
 class Homme(Animal):
@@ -66,11 +82,7 @@ class Homme(Animal):
         """function to print info form Animal() and from Homme()"""
         return super().__str__() + "\nname : " + self.name
 
-class Snake(Animal):
-    """class for the species snake"""
-    def set_foot_nb(self) :
-        """function to default set Snake foot to 0"""
-        self.foot = 0
+
 
 class Dog(Animal):
     """Dog class to define a new species : dog"""
@@ -98,11 +110,11 @@ if __name__ == "__main__":
     Dog0.add_children(Dog3)
     Dog0.add_children(Dog1)
     Dog1.add_children(Dog5)
-
-    print(Dog0)
+    print(Dog0.add_descendent())
     print(Dog1)
     print(Dog3)
     print(Dog5)
+
 
 
 
