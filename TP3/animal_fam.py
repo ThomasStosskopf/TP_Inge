@@ -21,8 +21,7 @@ class Animal():
         self.foot = 2
         self.children = [None]
         self.mother = mother
-
-
+        self.descendent = None
 
     def __str__(self) -> str:
         """if we do a print on animal, it will print some animal's features"""
@@ -40,10 +39,15 @@ class Animal():
         # and we put this attribute in our list of children
         if self.children[0] is None:
             self.children.remove(None)
-        return self.children.append(child.name)
+        self.children.append(child.name)
+        self.add_mother(child,self)
 
     def add_mother(self,child ,mommy):
-        """function to add a mother"""
+        """function to add a mother
+        for that purpose, we iterate through all
+        the children in children list add change
+        the name of their attribute mother
+        """
         for element in self.children:
             if element == child.name:
                 child.mother = mommy.name
@@ -89,13 +93,15 @@ if __name__ == "__main__":
     Dog1 = Dog(8, "Martel")
     Dog3 = Dog(8, "Hakam")
     Dog4 = Dog(7, "Joelle")
+    Dog5 = Dog(5, "Patate")
     Dog0.add_children(Dog3)
     Dog0.add_children(Dog1)
-    for kids in Dog0.children:
-        if kids == Dog1.name:
-            Dog0.add_mother(Dog1,Dog0)
+    Dog1.add_children(Dog5)
+
     print(Dog0)
     print(Dog1)
+    print(Dog3)
+    print(Dog5)
 
 
 
