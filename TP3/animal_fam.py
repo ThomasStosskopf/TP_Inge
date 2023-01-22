@@ -30,7 +30,8 @@ class Animal():
             +"diet : "+ self.diet + "\n"\
             +"Foot : "+ str(self.foot) + "\n"\
             +"Mother : " + self.mother + "\n"\
-            + "Children : " + str(self.children)
+            + "Children : " + str(self.children) + "\n"\
+            + "Descendent : " + str(self.descendent)
 
     def add_children(self, child):
         """function to add child to an animal"""
