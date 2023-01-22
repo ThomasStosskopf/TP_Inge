@@ -4,7 +4,7 @@ Script for training our skills on using class
 We can create animals, that are define by their species, diet
 Every animal can have a parent and children
 """
-
+import gc
 class Animal():
     """
     class animal where we define general stuff about animal
@@ -59,11 +59,40 @@ class Animal():
 
     def add_descendent(self):
         """function to add descendent in the list"""
+
+        if self.descendent[0] is None:
+            self.descendent.remove(None)
         for elem in self.child_id:
             for kids in self.children:
                 self.descendent.append(kids)
+                #self.descendent.append(elem)
+                self.descendent.append(__class__.add_descendent(elem))
 
         return self.descendent
+
+
+ # """
+ #        Recursively adds all descendants of the animal to a list
+ #        """
+ #        descendants = []
+ #        for child_id in self.child_id:
+ #            child = None
+ #            for obj in gc.get_objects():
+ #                if id(obj) == child_id:
+ #                    child = obj
+ #                    break
+ #            if child is None:
+ #                continue
+ #            descendants.append(child)
+ #            descendants.extend(child.add_descendents())
+ #        return descendants
+
+
+
+
+
+
+
 
 
 
@@ -99,7 +128,7 @@ class Dog(Animal):
             + "\nname : " + self.name +"\n"+\
             "______________________\n"+ super().__str__()
 
-# TEST HERE TO ADD WITHOUT PASSWOD
+# TEST HERE
 
 if __name__ == "__main__":
     Dog0 = Dog(10, "Boby")
