@@ -21,7 +21,6 @@ class Animal:
         self.species: str = species
         self.age: float = age
         self.diet: str = diet
-        # self.children: List[str] = []
         self.mother: str = mother
         self.children: List = []
         self.child_objt: List = []
@@ -116,10 +115,7 @@ class Dog(Animal):
             + "\nname : " + self.name +"\n"+\
             "______________________\n"+ super().__str__()
 
-    # def retrieve_children(self, input_animal: Animal) -> None:
-    #     """ retrieve_children returns all children object into a List"""
-    #     children = input_animal.descendent
-    #     self.descendent = children
+
 
 
 # TEST HERE
@@ -133,15 +129,14 @@ if __name__ == "__main__":
     Dog0.add_children(Dog3)
     Dog0.add_children(Dog1)
     Dog1.add_children(Dog5)
-    # lst = Dog0.add_descendent()  #[0]
-    # print(f"my list: {lst}")
+    Dog6 = Dog(age = 4, name = "JPP")
+    Dog5.add_children(Dog6)
 
+    print(Dog1.show_descendent())
     print(Dog0.show_descendent())
     print(Dog0)
-    # print(Dog1)
-    # print(Dog3)
-    # print(Dog5)
-    #print(f"my list: {lst}")
+    print(Dog1)
+
 
 
     # pouvoir ajouter un enfant dans un animal
