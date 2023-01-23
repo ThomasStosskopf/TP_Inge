@@ -4,8 +4,7 @@ Script for training our skills on using class
 We can create animals, that are define by their species, diet
 Every animal can have a parent and children
 """
-import gc
-from typing import List, Dict
+from typing import List
 
 
 class Animal:
@@ -45,7 +44,7 @@ class Animal:
         and we put this attribute in our list of children
         We take the attribute name from or object.
         """
-        self.children.append(child) #.name)
+        self.children.append(child.name)
         self.child_objt.append(child)
         self.add_mother(child, self)
         # self.add_descendent(child)
@@ -66,21 +65,26 @@ class Animal:
         for child in self.child_objt:
             all_childrens.append(child.add_descendent())
         # explode list of lists created by the above loop
-        lst = []
+        descendent_objct = []
         for child in all_childrens:
             if isinstance(child, List):
-                lst += child
+                descendent_objct += child
             else:
-                lst.append(child)
-        # all_childrens = [*child if isinstance(child, List) else child for child in all_childrens]
-        # all_childrens = [child.name for child in all_childrens]
-        # lst = [child.name for child in lst]
-        for objt in lst:
-            self.descendent.append(objt.name)
+                descendent_objct.append(child)
 
+        return descendent_objct
+
+    def show_descendent(self):
+        """
+        method just to add our descend into the
+        list self.descendent. We apply the previous
+        method in ou list then we run a for loop inside
+        to replace all the barbaric object path with
+        the attribute name associated with.
+        """
+        self.descendent = self.add_descendent()
+        self.descendent = [child.name for child in self.descendent]
         return self.descendent
-
-
 
 
 class Homme(Animal):
@@ -129,10 +133,10 @@ if __name__ == "__main__":
     Dog0.add_children(Dog3)
     Dog0.add_children(Dog1)
     Dog1.add_children(Dog5)
-    lst = Dog0.add_descendent()  #[0]
-    print(f"my list: {lst}")
-    lst = [child.name for child in lst]
+    # lst = Dog0.add_descendent()  #[0]
+    # print(f"my list: {lst}")
 
+    print(Dog0.show_descendent())
     print(Dog0)
     # print(Dog1)
     # print(Dog3)
