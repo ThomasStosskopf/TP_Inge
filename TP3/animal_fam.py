@@ -60,10 +60,10 @@ class Animal:
             if element == child.name:
                 child.mother = mommy.name
                 child.mum_objt.append(mommy)
-        if len(self.ascendent) <1:
-            self.ascendent.append(self.mother)
-        else:
-            child.ascendent.append(self.mother)
+        # if len(self.ascendent) <1:
+        self.ascendent.append(self.mother)
+
+        child.ascendent.append(self.mother)
 
     def add_descendent(self):
         """method to add descendent in the list"""
