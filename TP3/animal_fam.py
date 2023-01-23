@@ -26,6 +26,7 @@ class Animal:
         self.child_objt: List = []
         self.descendent: List = []
         self.ascendent: List = []
+        self.mum_objt: List = []
 
     def __str__(self) -> str:
         """if we do a print on animal, it will print some animal's features"""
@@ -35,7 +36,8 @@ class Animal:
                f"Mother: {self.mother}\n"\
                f"Children: {str(self.children)}\n"\
                f"Descendent: {str(self.descendent)}\n"\
-               f"Ascendent:  {str(self.ascendent)}\n"
+               f"Ascendent:  {str(self.ascendent)}\n"\
+               f"mum_objt: {self.mum_objt}"
 
     def add_children(self, child):
         """
@@ -57,7 +59,11 @@ class Animal:
         for element in self.children:
             if element == child.name:
                 child.mother = mommy.name
-                child.ascendent.append(mommy.name)
+                child.mum_objt.append(mommy)
+        if len(self.ascendent) <1:
+            self.ascendent.append(self.mother)
+        else:
+            self.ascendent.append(self.mother)
 
     def add_descendent(self):
         """method to add descendent in the list"""
@@ -143,7 +149,7 @@ if __name__ == "__main__":
 
     for index in range(len(DogFirstDescendent)):
         # print(DogFirstDescendent[index])
-        if DogFirstDescendent[index] == Dog5:
+        if DogFirstDescendent[index] == Dog6:
             break
         else:
             ascendent.append(DogFirstDescendent[index])
@@ -151,9 +157,10 @@ if __name__ == "__main__":
     ascendent = [mum.name for mum in ascendent]
     print(f"Ascendent of Do5 are: {ascendent}")
     # print(Dog1.show_descendent())
-    # print(Dog0.show_descendent())
-    # print(Dog0)
-    # print(Dog1)
+    print(Dog0.show_descendent())
+    print(Dog0)
+    print(Dog1)
+    print(Dog6)
 
 
 
