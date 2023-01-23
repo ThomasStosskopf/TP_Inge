@@ -63,7 +63,7 @@ class Animal:
         if len(self.ascendent) <1:
             self.ascendent.append(self.mother)
         else:
-            self.ascendent.append(self.mother)
+            child.ascendent.append(self.mother)
 
     def add_descendent(self):
         """method to add descendent in the list"""
