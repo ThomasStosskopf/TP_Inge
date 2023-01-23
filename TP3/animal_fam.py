@@ -11,14 +11,14 @@ class Animal:
     """
     class Animal where we define general stuff about Animal
     """
-    def __init__(self, species: str, age: float, diet, mother="Thomas <3") -> None:
+    def __init__(self,  age: float, diet, mother="Thomas <3") -> None: #species: str,
         """
         we define here attribute of our animal class
         :param species: the species (str)
         :param age: age of the animal (float)
         :param diet: animal diet (str?)
         """
-        self.species: str = species
+        # self.species: str = species
         self.age: float = age
         self.diet: str = diet
         self.mother: str = mother
@@ -30,8 +30,7 @@ class Animal:
 
     def __str__(self) -> str:
         """if we do a print on animal, it will print some animal's features"""
-        return f"Species : {self.species} \n" \
-               f"age: {self.age}\n"\
+        return f"age: {self.age}\n"\
                f"diet: {self.diet}\n"\
                f"Mother: {self.mother}\n"\
                f"Children: {str(self.children)}\n"\
@@ -91,8 +90,7 @@ class Animal:
         self.descendent = [child.name for child in self.descendent]
         return self.descendent
 
-    def show_ascendent(self):
-        list_objct = self.add_descendent()
+
 
 
 
@@ -112,10 +110,11 @@ class Homme(Animal):
 
 class Dog(Animal):
     """Dog class to define a new species : dog"""
-    def __init__(self, age, name) -> None:
+    def __init__(self, age, name, species = "Dog") -> None:
         """function to init a dog with default features"""
-        super().__init__("Dog", age, "carnivore")
+        super().__init__(age, "carnivore")
         self.age = age
+        self.species = species
         self.name = name
         self.foot = 4
 
@@ -123,7 +122,7 @@ class Dog(Animal):
         """function to print features form Animal() and from Dog()"""
         return "______________________\n" \
             + "\nname : " + self.name +"\n"+\
-            "______________________\n"+ super().__str__()
+            "______________________\n"+ "Species: " +self.species + "\n" + super().__str__()
 
 
 
@@ -141,22 +140,8 @@ if __name__ == "__main__":
     Dog1.add_children(Dog5)
     Dog6 = Dog(age = 4, name = "JPP")
     Dog5.add_children(Dog6)
-    DogFirstDescendent = Dog0.add_descendent()
-    print(DogFirstDescendent)
+    Dog1.show_descendent()
 
-    ascendent = []
-
-    for index in range(len(DogFirstDescendent)):
-        # print(DogFirstDescendent[index])
-        if DogFirstDescendent[index] == Dog6:
-            break
-        else:
-            ascendent.append(DogFirstDescendent[index])
-
-    ascendent = [mum.name for mum in ascendent]
-    print(f"Ascendent of Do5 are: {ascendent}")
-    # print(Dog1.show_descendent())
-    print(Dog0.show_descendent())
     print(Dog0)
     print(Dog1)
     print(Dog6)
