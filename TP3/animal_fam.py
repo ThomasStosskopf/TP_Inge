@@ -26,7 +26,7 @@ class Animal:
         self.child_objt: List = []
         self.descendent: List = []
         self.ascendent: List = []
-        self.mum_objt: List = []
+
 
     def __str__(self) -> str:
         """if we do a print on animal, it will print some animal's features"""
@@ -37,7 +37,6 @@ class Animal:
                f"Children: {str(self.children)}\n"\
                f"Descendent: {str(self.descendent)}\n"\
                f"Ascendent:  {str(self.ascendent)}\n"\
-               f"mum_objt: {self.mum_objt}"
 
     def add_children(self, child):
         """
@@ -49,6 +48,8 @@ class Animal:
         self.children.append(child.name)
         self.child_objt.append(child)
         self.add_mother(child, self)
+        child.ascendent.append(self.name)
+        child.ascendent.append(self.ascendent)
 
     def add_mother(self, child, mommy):
         """add_mother adds a mother to an Animal object.
@@ -59,11 +60,9 @@ class Animal:
         for element in self.children:
             if element == child.name:
                 child.mother = mommy.name
-                child.mum_objt.append(mommy)
-        # if len(self.ascendent) <1:
-        self.ascendent.append(self.mother)
+        if len(self.ascendent) <1:
+            self.ascendent.append(self.mother)
 
-        child.ascendent.append(self.mother)
 
     def add_descendent(self):
         """method to add descendent in the list"""
