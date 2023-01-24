@@ -47,8 +47,7 @@ class Animal:
         self.children.append(child.name)
         self.child_objt.append(child)
         self.add_mother(child, self)
-        child.ascendent.append(self.name)
-        child.ascendent.append(self.ascendent)
+
 
     def add_mother(self, child, mommy):
         """add_mother adds a mother to an Animal object.
@@ -61,6 +60,8 @@ class Animal:
                 child.mother = mommy.name
         if len(self.ascendent) <1:
             self.ascendent.append(self.mother)
+        child.ascendent.append(mommy.name)
+        child.ascendent.append(self.ascendent)
 
 
     def add_descendent(self):
