@@ -51,8 +51,10 @@ class Node:
         display the node and all the nodes under it
         """
         space = ""
-
+        # '_' is used instead of i to iterate by convention
+        # when you're not using the variable
         for _ in range(0,self.depth):
+            # for a depth = n, we add n "\n" to the variable space
             space += "\t"
         retour = str(space) + str(self) + "\n"
         if self.right:
@@ -142,6 +144,7 @@ if __name__ == "__main__":
     node5.add_node(node6, node7)
     # print(node5.display_node())
     node4.add_node(node5)
+    node7.add_node(node8)
     print(tree1.print_tree())
 
 
