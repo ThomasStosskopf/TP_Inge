@@ -14,9 +14,18 @@ class Binanytree:
         self.root = None
         self.node = None
 
+    def print_tree(self):
+        """
+        display the node and all the nodes under it
+        """
+        return self.root.display_node()
 
 
 class Node:
+    """
+    class to create object node that can be add in a
+    binary tree
+    """
 
     def __init__(self, value):
         """
@@ -35,27 +44,30 @@ class Node:
         """
         method to return these value when we print
         """
-        return f"Node value: {self.value}\n" \
-               f"Node depth: {self.depth}"
+        return f"V:{str(self.value)}/D:{str(self.depth)}"
 
     def display_node(self):
         """
         display the node and all the nodes under it
         """
-        retour = str(self)
+        space = ""
 
+        for _ in range(0,self.depth):
+            space += "\t"
+        retour = str(space) + str(self) + "\n"
         if self.right:
-            retour += " " + self.right.display_node()
+            retour += self.right.display_node()
         if self.left:
-            retour += " " + self.left.display_node()
+            retour += self.left.display_node()
         return retour
 
     def is_leaf(self):
         """
         boolean method to return true if a node is a leaf
         and False if it is not a leaf
+        a leaf is a node has no left or right node
         """
-        return self.left == None and self.right == None
+        return self.left is None and self.right is None
 
     def add_node(self, left = None, right = None):
         """
@@ -104,10 +116,6 @@ class Node:
             return max_depth
 
 
-    def display_nd(self):
-        pass
-
-
 if __name__ == "__main__":
     node1 = Node(value=0)
     node2 = Node(value=2)
@@ -117,15 +125,15 @@ if __name__ == "__main__":
     tree1 = Binanytree()
     tree1.root = node1
     node3.add_node(node4)
-    print("Node1:\n", node1)
-    print("Node2:\n", node2)
-    print("Node3:\n", node3)
-
-    print("leaf2 ??", node2.is_leaf())
-    print("leaf3 ??", node3.is_leaf())
-    print(node1.display_node())
-
-    print(node4)
+    # print("Node1:\n", node1)
+    # print("Node2:\n", node2)
+    # print("Node3:\n", node3)
+    #
+    # print("leaf2 ??", node2.is_leaf())
+    # print("leaf3 ??", node3.is_leaf())
+    # print(node1.display_node())
+    #
+    # print(node4)
 
     node5 = Node(value=5)
     node6 = Node(value=6)
@@ -134,9 +142,9 @@ if __name__ == "__main__":
     node5.add_node(node6, node7)
     # print(node5.display_node())
     node4.add_node(node5)
-    print(node1.display_node())
+    print(tree1.print_tree())
 
-    print("depth max: ", node1.depth_max(0))
+
 
 # avoir un joli affichage en mode "arbre" dans le terminal
 # utilise une récursive
