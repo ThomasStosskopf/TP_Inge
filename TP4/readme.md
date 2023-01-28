@@ -17,6 +17,12 @@ faire une méthode print_tree dans la class **Binary_tree**
 	2/1
 </pre>
 
+### Aswer 
+
+to print the tree like the above way just use the method print_tree() on the 
+tree you want to print. It will print the tree based on the node that was define
+as the root. 
+
 ## Pour les personnes plus courageuses (facultatif)
 Faire l'affichage suivant:
 <pre>
