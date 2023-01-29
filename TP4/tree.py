@@ -63,6 +63,27 @@ class Node:
             retour += self.left.display_node()
         return retour
 
+
+    def display_node_hardway(self):
+        """Method to display the tree verticaly"""
+        # first, if the node has no child:
+        if self.right is None and self.left is None:
+            retour = "%s" % self.value
+            width = len(retour)
+            middle = width // 2
+            return retour, middle
+        # the node has only a right child:
+        if self.left is None:
+            pass
+        # the node has only a left child:
+        if self.right is None:
+            pass
+        # the node has two child
+        else:
+            left = self.left.display_node_hardway()
+            right = self.right.display_node_hardway()
+
+
     def is_leaf(self):
         """
         boolean method to return true if a node is a leaf
@@ -146,6 +167,7 @@ if __name__ == "__main__":
     node4.add_node(node5)
     node7.add_node(node8)
     print(tree1.print_tree())
+    print(node1.display_node_hardway())
 
 
 
