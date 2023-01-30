@@ -1,5 +1,9 @@
 # A faire
 
+every answer are in the tree.py script
+the test.py script was created just to not lose some idea and trials. 
+
+
 ## Pour tout le monde
 faire un affichage d'un parcours en profondeur, permettant de représenter
 l'arbre de façon arborescente.
@@ -17,7 +21,7 @@ faire une méthode print_tree dans la class **Binary_tree**
 	2/1
 </pre>
 
-### Aswer 
+### Answer 
 
 to print the tree like the above way just use the method print_tree() on the 
 tree you want to print. It will print the tree based on the node that was define
@@ -40,6 +44,11 @@ qui permet de faire ce genre d'affichage.
 
 ## Pour aller plus loin (facultatif)
 - faire une méthode qui permet de connaitre la taille de l'arbre
+method to know the height of the tree: i created a count_nodes() that go throught all the
+nodes in the tree and add +1 to a variable nb_nodes. 
+In Binarytree i call the count_nodes method to know the height of the tree. 
+
+
 - faire une méthode qui permet de connaitre la hauteur de l'abre
 - faire un arbre binaire de recherche :
 

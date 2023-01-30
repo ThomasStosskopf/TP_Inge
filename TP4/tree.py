@@ -20,6 +20,12 @@ class Binanytree:
         """
         return self.root.display_node()
 
+    def height(self):
+        return self.root.count_nodes()
+
+
+
+
 
 class Node:
     """
@@ -62,6 +68,9 @@ class Node:
         if self.left:
             retour += self.left.display_node()
         return retour
+
+
+
 
     def display_node_hardway(self):
         """Method to display the tree vertically"""
@@ -108,8 +117,6 @@ class Node:
             zipped_lines = list(zip(left, right))
             lines = [first_line, second_line] + [a + ' ' + b for a, b in zipped_lines]
             return lines, n + m + 2, max(p, q) + 2, n + len_next
-
-
 
 
     def is_leaf(self):
@@ -166,6 +173,19 @@ class Node:
                 max_depth = self.left.depth_max(max_depth)
             return max_depth
 
+    def count_nodes(self, nb_nodes=1):
+        """
+        method to count the number of nodes in a tree
+        :param nb_nodes: this parameers is set to 1 by default because
+        we always run this method on a node
+        """
+        # if there is a right branch, we dive in to it
+        if self.right:
+            nb_nodes = +1 +self.right.count_nodes(nb_nodes)
+        # if there is a left branch, we dive in to it
+        if self.left:
+            nb_nodes = +1 + self.left.count_nodes(nb_nodes)
+        return nb_nodes
 
 if __name__ == "__main__":
     node1 = Node(value=0)
@@ -190,14 +210,16 @@ if __name__ == "__main__":
     node6 = Node(value=6)
     node7 = Node(value=7)
     node8 = Node(value=8)
+    node9 = Node(value=9)
     node5.add_node(node6, node7)
     # print(node5.display_node())
     node4.add_node(node5)
     node7.add_node(node8)
+    node8.add_node(node9)
     print(tree1.print_tree())
     print(node1.display_node_hardway())
 
-
+    print(tree1.height())
 
 # avoir un joli affichage en mode "arbre" dans le terminal
 # utilise une récursive
