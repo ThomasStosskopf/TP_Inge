@@ -63,25 +63,53 @@ class Node:
             retour += self.left.display_node()
         return retour
 
-
     def display_node_hardway(self):
-        """Method to display the tree verticaly"""
-        # first, if the node has no child:
+        """Method to display the tree vertically"""
+        # if the node has no child:
         if self.right is None and self.left is None:
-            retour = "%s" % self.value
+            retour = str(self.value)
             width = len(retour)
+            height = 1
             middle = width // 2
-            return retour, middle
-        # the node has only a right child:
+            return [retour], width, height, middle
+
+        # if the node has only a right child:
         if self.left is None:
-            pass
-        # the node has only a left child:
+            retour, n, p, x = self.right.display_node_hardway()
+            next_value = str(self.value)
+            len_next = len(next_value)
+            first_line = next_value + ' ' * x + ' ' * (n - x)
+            second_line = ' ' * (len_next + x) + '\\' + ' ' * (n - x - 1)
+            shifted_lines = [len_next * ' ' + line for line in retour]
+            return [first_line, second_line] + shifted_lines, n + len_next, p + 2, len_next // 2
+
+        # if the node has only a left child:
         if self.right is None:
-            pass
-        # the node has two child
+            retour, n, p, x = self.left.display_node_hardway()
+            next_value = str(self.value)
+            len_next = len(next_value)
+            first_line = ' ' * (x + 1) + '_' * (n - x - 1) + next_value
+            second_line = ' ' * x + ' ' + ' ' * (n - x - 1 + len_next)
+            shifted_lines = [line + len_next * ' ' for line in retour]
+            return [first_line, second_line] + shifted_lines, n + len_next, p + 2, n + len_next // 2
+
+        # if the node has two child
         else:
-            left = self.left.display_node_hardway()
-            right = self.right.display_node_hardway()
+            left, n, p, x = self.left.display_node_hardway()
+            right, m, q, y = self.right.display_node_hardway()
+            next_value = str(self.value)
+            len_next = len(next_value)
+            first_line = ' ' * (x + 1) + ' ' * (n - x - 1) + next_value + ' ' * y + ' ' * (m - y)
+            second_line = ' ' * x + ' ' + ' ' * (n - x - 1 + len_next + y) + ' ' + ' ' * (m - y - 1)
+            if p < q:
+                left += [' ' * n] * (q - p)
+            elif q < p:
+                right += [' ' * m] * (p - q)
+            zipped_lines = list(zip(left, right))
+            lines = [first_line, second_line] + [a + ' ' + b for a, b in zipped_lines]
+            return lines, n + m + 2, max(p, q) + 2, n + len_next
+
+
 
 
     def is_leaf(self):
