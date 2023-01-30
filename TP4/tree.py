@@ -21,6 +21,10 @@ class Binanytree:
         return self.root.display_node()
 
     def height(self):
+        """
+        Print the height of the tree
+        the height of the tree is defined as the number of nodes in the tree
+        """
         return self.root.count_nodes()
 
 
@@ -74,49 +78,48 @@ class Node:
 
     def display_node_hardway(self):
         """Method to display the tree vertically"""
+        max_space = self.depth_max()
+        space = ""
+        first_line = ""
+        second_line = ""
+        for _ in range(0,max_space):
+
+            space += "\t"
+            first_line = space + str(self) + "\n"
+        space = ""
+        for _ in range(0,max_space-2):
+            space += "\t"
+            if self.right and self.left:
+                second_line = space + str(self.left.display_node_hardway()) + space + str(self.right.display_node_hardway())
+            if self.left is None and self.right:
+                second_line = space + str(self.right.display_node_hardway())
+            if self.right is None and self.left:
+                second_line = space +  str(self.left.display_node_hardway())
+
+
+
+        final = first_line + second_line
+        return final
+
         # if the node has no child:
-        if self.right is None and self.left is None:
-            retour = str(self.value)
-            width = len(retour)
-            height = 1
-            middle = width // 2
-            return [retour], width, height, middle
-
-        # if the node has only a right child:
-        if self.left is None:
-            retour, n, p, x = self.right.display_node_hardway()
-            next_value = str(self.value)
-            len_next = len(next_value)
-            first_line = next_value + ' ' * x + ' ' * (n - x)
-            second_line = ' ' * (len_next + x) + '\\' + ' ' * (n - x - 1)
-            shifted_lines = [len_next * ' ' + line for line in retour]
-            return [first_line, second_line] + shifted_lines, n + len_next, p + 2, len_next // 2
-
-        # if the node has only a left child:
-        if self.right is None:
-            retour, n, p, x = self.left.display_node_hardway()
-            next_value = str(self.value)
-            len_next = len(next_value)
-            first_line = ' ' * (x + 1) + '_' * (n - x - 1) + next_value
-            second_line = ' ' * x + ' ' + ' ' * (n - x - 1 + len_next)
-            shifted_lines = [line + len_next * ' ' for line in retour]
-            return [first_line, second_line] + shifted_lines, n + len_next, p + 2, n + len_next // 2
-
-        # if the node has two child
-        else:
-            left, n, p, x = self.left.display_node_hardway()
-            right, m, q, y = self.right.display_node_hardway()
-            next_value = str(self.value)
-            len_next = len(next_value)
-            first_line = ' ' * (x + 1) + ' ' * (n - x - 1) + next_value + ' ' * y + ' ' * (m - y)
-            second_line = ' ' * x + ' ' + ' ' * (n - x - 1 + len_next + y) + ' ' + ' ' * (m - y - 1)
-            if p < q:
-                left += [' ' * n] * (q - p)
-            elif q < p:
-                right += [' ' * m] * (p - q)
-            zipped_lines = list(zip(left, right))
-            lines = [first_line, second_line] + [a + ' ' + b for a, b in zipped_lines]
-            return lines, n + m + 2, max(p, q) + 2, n + len_next
+        # if self.right is None and self.left is None:
+        #
+        #     return
+        #
+        # # if the node has only a right child:
+        # if self.left is None:
+        #
+        #     return
+        #
+        # # if the node has only a left child:
+        # if self.right is None:
+        #
+        #     return
+        #
+        # # if the node has two child
+        # else:
+        #
+        #     return
 
 
     def is_leaf(self):
@@ -155,7 +158,7 @@ class Node:
             self.right.depth = self.depth + 1
             self.right.update_children_depth()
 
-    def depth_max(self, max_depth):
+    def depth_max(self, max_depth = 0):
         """
         method to know the max depth of a tree
         """
