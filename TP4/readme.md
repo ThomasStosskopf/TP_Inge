@@ -43,7 +43,8 @@ qui permet de faire ce genre d'affichage.
 
 
 ## Pour aller plus loin (facultatif)
-- faire une méthode qui permet de connaitre la taille de l'arbre
+- faire une méthode qui permet de connaitre la taille de l'arbre 
+### Answer
 method to know the height of the tree: i created a count_nodes() that go throught all the
 nodes in the tree and add +1 to a variable nb_nodes. 
 In Binarytree i call the count_nodes method to know the height of the tree. 
