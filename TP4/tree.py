@@ -80,6 +80,8 @@ class Node:
         """Method to display the tree vertically"""
         max_space = self.depth_max()
         space = ""
+        space2 = ""
+
         first_line = ""
         second_line = ""
         for _ in range(0,max_space):
@@ -87,39 +89,23 @@ class Node:
             space += "\t"
             first_line = space + str(self) + "\n"
         space = ""
-        for _ in range(0,max_space-2):
-            space += "\t"
+        for _ in range(0,max_space):
+            max_space -= 1
+            space2 = "\t" * max_space
             if self.right and self.left:
-                second_line = space + str(self.left.display_node_hardway()) + space + str(self.right.display_node_hardway())
+                second_line = space2 + str(self.left.display_node_hardway()) \
+                              + space + str(self.right.display_node_hardway())
             if self.left is None and self.right:
-                second_line = space + str(self.right.display_node_hardway())
+                second_line = space2 + str(self.right.display_node_hardway())
             if self.right is None and self.left:
-                second_line = space +  str(self.left.display_node_hardway())
+                second_line = space2 +  str(self.left.display_node_hardway())
 
 
 
         final = first_line + second_line
         return final
 
-        # if the node has no child:
-        # if self.right is None and self.left is None:
-        #
-        #     return
-        #
-        # # if the node has only a right child:
-        # if self.left is None:
-        #
-        #     return
-        #
-        # # if the node has only a left child:
-        # if self.right is None:
-        #
-        #     return
-        #
-        # # if the node has two child
-        # else:
-        #
-        #     return
+
 
 
     def is_leaf(self):
