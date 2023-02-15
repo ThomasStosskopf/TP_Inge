@@ -69,9 +69,19 @@ class Application(Tk):
             self.entries[key].delete(0, END)
         self.controller.add_animal(dict_animal)
 
+
     def del_animal(self):
         delete_name = self.listboxname.get(ACTIVE)
         self.controller.del_animal(delete_name)
+        # for loop to delete in the list box
+        for i in range(self.listboxname.size()): # go through all the index of our listbox
+            if self.listboxname.get(i) == delete_name: # if the index is similar to the index
+                                                        # of the item we want to delete
+                self.listboxname.delete(i)              # we can delete it in the listbox
+                break
+
+
+
 
 
     def view_window(self):
