@@ -1,5 +1,5 @@
 # encoding : utf8
-
+"""script animal to  create animals with a class ..."""
 class Animal:
     """
     Animal is defined by 5 parameters:
@@ -23,7 +23,3 @@ class Animal:
     def __str__(self):
         """what will be return if we print an animal"""
         return self.species +"/"+str(self.age) +"/"+self.diet +"/"+str(self.foot) +"/"+self.name
-
-
-
-
