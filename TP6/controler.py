@@ -38,6 +38,11 @@ class Controller:
     def get_model_name(self):
         return self.model.get_name()
 
+    def del_animal(self, name_to_delete):
+
+        self.model.delete_animal(name_to_delete)
+
+
 if __name__ == "__main__":
     C = Controller()
 

@@ -33,6 +33,27 @@ class Model:
                         + "," + dict_animal["foot"]
                         + "," + dict_animal["name"])
 
+    def delete_animal(self, name_to_delete):
+        """
+        method to delete an animal from file
+        """
+        #delete in dict
+        for key in self.dico_animaux:
+            if key == name_to_delete:
+                del self.dico_animaux[key]
+                break
+
+        # delete in file txt
+        self.file.seek(0)  # Move the file cursor to the beginning of the file
+        lines = self.file.readlines()  # Read all lines from the file
+        self.file.seek(0)  # Move the file cursor back to the beginning of the file
+        self.file.truncate()  # Clear the file contents
+        for line in lines:
+            line_list = line.strip().split(',')
+            if line_list[-1] != name_to_delete:
+                self.file.write(line)  # Write the line back to the file if the
+                                        # animal name does not match the specified name
+
     def close(self):
         """
         method to close the file
@@ -59,5 +80,5 @@ class Model:
 if __name__ == "__main__" :
     model = Model("a.txt")
     model.read_file()
-    print(model.get_name())
+    print(model.dico_animaux)
     model.close()

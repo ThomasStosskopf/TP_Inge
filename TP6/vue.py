@@ -17,9 +17,9 @@ class Application(Tk):
         self.label1 = Label(self, text="")
         self.label_search = Label(self, text="Recherche")
         self.bouton_display = Button(self, text="Afficher", command=self.display_something)
-        self.bouton = Button(self, text="Quitter", command=self.quit_window)
+        self.bouton_leave = Button(self, text="Quitter", command=self.quit_window)
         self.bouton_add_animal = Button(self, text="Add", command=self.add_animal)
-
+        self.button_delete = Button(self, text="Delete", command=self.del_animal)
 
         # Liste box here
         self.listboxname = Listbox(self)
@@ -32,7 +32,6 @@ class Application(Tk):
         self.search = Entry(self)
         self.entries = {}
         self.entries_label = {}
-
         for att in self.attributes:
             self.entries[att] = Entry(self)
             self.entries_label[att] = Label(self, text=att)
@@ -43,11 +42,15 @@ class Application(Tk):
         #self.search.pack() # we removed this on because we did thought it was usefull
         self.listboxname.pack()
         self.bouton_display.pack()
+        # for loop to add entries box
         for att in self.attributes:
             self.entries_label[att].pack()
             self.entries[att].pack()
-        self.bouton.pack()
+
+        # pack buttons :
         self.bouton_add_animal.pack()
+        self.button_delete.pack()
+        self.bouton_leave.pack()
 
     def display_label(self, value):
         self.label1['text'] = value
@@ -65,6 +68,10 @@ class Application(Tk):
             dict_animal[key] = self.entries[key].get()
             self.entries[key].delete(0, END)
         self.controller.add_animal(dict_animal)
+
+    def del_animal(self):
+        delete_name = self.listboxname.get(ACTIVE)
+        self.controller.del_animal(delete_name)
 
 
     def view_window(self):
