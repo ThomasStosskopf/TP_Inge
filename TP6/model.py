@@ -21,8 +21,8 @@ class Model:
         for line in self.file:
             line = line.strip()
             tab = line.split(",")
-            animal = Animal(tab[0],tab[1],tab[2],tab[3],tab[4])
-            self.dico_animaux[animal.name] = animal
+            a = Animal(tab[0], tab[1], tab[2], tab[3], tab[4])
+            self.dico_animaux[a.name] = a
 
     def save(self, dict_animal):
         """

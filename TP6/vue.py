@@ -1,7 +1,7 @@
 # encoding : utf8
 """i dont know"""
 from tkinter import *
-from controler import *
+
 class Application(Tk):
     def __init__(self, controller):
         """init view"""

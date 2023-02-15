@@ -13,7 +13,6 @@ class Controller:
         self.model = Model("a.txt") # define where we are going to write and seek for animal
         self.model.read_file() # read the previous file in Model
         self.view = Application(self)
-        self.model = Model("a.txt")
 
         self.view.view_window()  # call the method from vue.py
 
