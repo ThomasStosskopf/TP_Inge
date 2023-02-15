@@ -35,6 +35,8 @@ class Controller:
         self.model.close()
         self.view.destroy()
 
+    def get_model_name(self):
+        return self.model.get_name()
 
 if __name__ == "__main__":
     C = Controller()

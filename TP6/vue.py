@@ -8,6 +8,7 @@ class Application(Tk):
         Tk.__init__(self)
         self.controller = controller
         self.attributes = self.controller.get_model_entries()
+        self.namelist= self.controller.get_model_name()
         self.creer_widgets()
 
     def creer_widgets(self):
@@ -19,6 +20,15 @@ class Application(Tk):
         self.bouton = Button(self, text="Quitter", command=self.quit_window)
         self.bouton_add_animal = Button(self, text="Add", command=self.add_animal)
 
+
+        # Liste box here
+        self.listboxname = Listbox(self)
+        counter = 0
+        for name in self.namelist:
+            counter += 1
+            self.listboxname.insert(counter, name)
+
+        # entries box
         self.search = Entry(self)
         self.entries = {}
         self.entries_label = {}
@@ -30,7 +40,8 @@ class Application(Tk):
         self.label.pack()
         self.label1.pack()
         self.label_search.pack()
-        self.search.pack()
+        #self.search.pack() # we removed this on because we did thought it was usefull
+        self.listboxname.pack()
         self.bouton_display.pack()
         for att in self.attributes:
             self.entries_label[att].pack()
@@ -42,7 +53,7 @@ class Application(Tk):
         self.label1['text'] = value
 
     def display_something(self):
-        self.controller.display(self.search.get())
+        self.controller.display(self.listboxname.get(ACTIVE))
 
     def quit_window(self):
         """method to quit the window"""
@@ -52,7 +63,9 @@ class Application(Tk):
         dict_animal = {}
         for key in self.entries:
             dict_animal[key] = self.entries[key].get()
+            self.entries[key].delete(0, END)
         self.controller.add_animal(dict_animal)
+
 
     def view_window(self):
         """method tp show our window"""
@@ -61,7 +74,7 @@ class Application(Tk):
 
 
 if __name__ == "__main__":
-    app = Application(Controller)
+    app = Application()
     app.view_window()
 
 

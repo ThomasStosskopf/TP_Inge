@@ -48,7 +48,16 @@ class Model:
             attr.append(key)
         return attr
 
+    def get_name(self) -> []:
+        """method to take the name of the animals"""
+        list_name = []
+        for keys in self.dico_animaux:
+            list_name.append(keys)
+        list_name.sort()
+        return list_name
+
 if __name__ == "__main__" :
     model = Model("a.txt")
     model.read_file()
+    print(model.get_name())
     model.close()

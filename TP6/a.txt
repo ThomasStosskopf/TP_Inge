@@ -1,3 +1,7 @@
 Human,22,omnivore,2,Rochelle
 Human,21,omnivore,2,Audrey
 Human,25,omnivore,2,Mohamed
+Human,22,omnivore,2,Jean
+human,25,omnivore,2,Thomas
+humain,22,omnivore,2,Pierre-Loïc
+Human,22,omnivore,2,Lynn
