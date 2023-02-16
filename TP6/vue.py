@@ -29,7 +29,6 @@ class Application(Tk):
             self.listboxname.insert(counter, name)
 
         # entries box
-        self.search = Entry(self)
         self.entries = {}
         self.entries_label = {}
         for att in self.attributes:
@@ -39,7 +38,7 @@ class Application(Tk):
         self.label.pack()
         self.label1.pack()
         self.label_search.pack()
-        #self.search.pack() # we removed this on because we did thought it was usefull
+
         self.listboxname.pack()
         self.bouton_display.pack()
         # for loop to add entries box
@@ -53,12 +52,25 @@ class Application(Tk):
         self.bouton_leave.pack()
 
     def display_label(self, value):
-        print(value)
-        print(type(value))
-        self.label1['text'] = value
+        """
+        display what the controller give by changing the
+        text inside entries box
+        """
+        dico = value # we get the dico from the model here
+        #self.label1['text'] = value
+        # we iterate through the dico
+        for key in dico:
+            # the we iterate through the list of attributes
+            for att in self.attributes:
+                # then when we fin an attributes that match with the key
+                if key == att:
+                    # we can write the right value in the right entry
+                    self.entries[att].insert(1,dico[key])
+
+
 
     def display_something(self):
-        """display animal's attributes"""
+        """give animal selected to the controller"""
         self.controller.display(self.listboxname.get(ACTIVE))
 
 
@@ -83,7 +95,6 @@ class Application(Tk):
                                                         # of the item we want to delete
                 self.listboxname.delete(i)              # we can delete it in the listbox
                 break
-
 
 
 

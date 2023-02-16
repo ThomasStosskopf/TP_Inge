@@ -18,15 +18,20 @@ class Controller:
 
     def display(self, value):
         """method to display an animal on the window"""
-        self.view.display_label(self.model.dico_animaux[value])
-        print(self.model.dico_animaux)
-# utiliser le dictionnaire animal attribu avec sa valeur
+        self.view.display_label(self.model.get_dict_attr(value))
+
+
+    def control_give_dict(self, dico):
+        return self.model.get_dict_attr(dico)
+
+# utiliser le dictionnaire animal attribut avec sa valeur
 
     def add_animal(self, dict_animal):
         """Method to save an animal in our dict"""
         self.model.save(dict_animal)
 
     def get_model_entries(self):
+        """get the list of the attributes with the method in model"""
         return self.model.get_attributes()
 
     def quit_window(self):
@@ -53,21 +58,3 @@ class Controller:
 
 if __name__ == "__main__":
     C = Controller()
-
-
-
-
-
-# prochaine fois
-# faire en sorte que l'on affiche toute la liste de tous les animaux
-# du fichier a.txt, et que l'on puisse ajouter un animal, ou modifier un animal
-# quand on supprimer on doit pouvoir supprimer sur la bonne ligne du fichier
-# quand on add remise à zéro des champs
-
-
-
-
-
-
-
-

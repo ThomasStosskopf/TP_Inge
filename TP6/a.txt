@@ -3,3 +3,4 @@ Human,25,omnivore,2,Mohamed
 human,25,omnivore,2,Thomas
 human,22,omnivore,2,Joseph
 human,56,omnivore,2,Robert
+human,45,omnivore,2,Christophe
