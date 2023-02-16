@@ -18,7 +18,7 @@ class Application(Tk):
         self.label_search = Label(self, text="Recherche")
         self.bouton_display = Button(self, text="Afficher", command=self.display_something)
         self.bouton_leave = Button(self, text="Quitter", command=self.quit_window)
-        self.bouton_add_animal = Button(self, text="Add", command=self.add_animal)
+        self.bouton_add_animal = Button(self, text="Add/Modify", command=self.add_animal)
         self.button_delete = Button(self, text="Delete", command=self.del_animal)
 
         # Liste box here
@@ -53,20 +53,24 @@ class Application(Tk):
         self.bouton_leave.pack()
 
     def display_label(self, value):
+        print(value)
+        print(type(value))
         self.label1['text'] = value
 
     def display_something(self):
+        """display animal's attributes"""
         self.controller.display(self.listboxname.get(ACTIVE))
+
 
     def quit_window(self):
         """method to quit the window"""
-        self.controller.quit_window()
+        self.controller.quit_window() # use the method in controler.py to quit
 
     def add_animal(self):
         dict_animal = {}
         for key in self.entries:
             dict_animal[key] = self.entries[key].get()
-            self.entries[key].delete(0, END)
+            self.entries[key].delete(0, END) # delete text in the entries
         self.controller.add_animal(dict_animal)
 
 

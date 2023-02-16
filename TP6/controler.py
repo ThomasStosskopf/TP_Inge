@@ -19,6 +19,8 @@ class Controller:
     def display(self, value):
         """method to display an animal on the window"""
         self.view.display_label(self.model.dico_animaux[value])
+        print(self.model.dico_animaux)
+# utiliser le dictionnaire animal attribu avec sa valeur
 
     def add_animal(self, dict_animal):
         """Method to save an animal in our dict"""
@@ -36,10 +38,16 @@ class Controller:
         self.view.destroy()
 
     def get_model_name(self):
+        """method to get the list of name from model.py
+         so we can give it to the view.
+         """
         return self.model.get_name()
 
     def del_animal(self, name_to_delete):
-
+        """
+        take the name to delete from the view
+        so we can give it to the model
+        """
         self.model.delete_animal(name_to_delete)
 
 

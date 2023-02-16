@@ -1,3 +1,5 @@
 Human,21,omnivore,2,Audrey
 Human,25,omnivore,2,Mohamed
 human,25,omnivore,2,Thomas
+human,22,omnivore,2,Joseph
+human,56,omnivore,2,Robert

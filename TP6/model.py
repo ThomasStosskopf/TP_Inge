@@ -24,6 +24,7 @@ class Model:
             a = Animal(tab[0], tab[1], tab[2], tab[3], tab[4])
             self.dico_animaux[a.name] = a
 
+
     def save(self, dict_animal):
         """
         method to save animal in the file a.txt
@@ -35,7 +36,7 @@ class Model:
 
     def delete_animal(self, name_to_delete):
         """
-        method to delete an animal from file
+        method to delete an animal from file and dictionary
         """
         #delete in dict
         for key in self.dico_animaux:
@@ -77,8 +78,28 @@ class Model:
         list_name.sort()
         return list_name
 
+    def get_dict_attr(self, name):
+        """
+        method to get a dictionary of the chosen animal key will be the attributes
+        and values will be the values of each attributes. We iterate with the build-in
+         dir() method through all the attributes of the chosen object. Then we have
+         to ignore the attributes which starts with '_', and we only get the attributes
+         we have created.
+        """
+        dict_animal = {}
+        animal = self.dico_animaux.get(name) # get the object 'animal' the user wants
+        # Iterate through the attributes of the class Animal
+        for attribute in dir(animal):
+            # Ignore attributes that start with underscore (_) and are not defined in the class
+            if not attribute.startswith("_"):
+                # Get the value of the attribute
+                value = getattr(animal, attribute)
+                # Add the attribute and its value to the dictionary
+                dict_animal[attribute] = value
+        return dict_animal
+
 if __name__ == "__main__" :
     model = Model("a.txt")
     model.read_file()
-    print(model.dico_animaux)
+    print(model.get_dict_attr("Thomas"))
     model.close()
