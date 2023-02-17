@@ -56,12 +56,16 @@ class Application(Tk):
         display what the controller give by changing the
         text inside entries box
         """
+        # small loop to delete previous text
+        for key1 in self.entries:
+            self.entries[key1].delete(0, END)  # delete text in the entries
         dico = value # we get the dico from the model here
         #self.label1['text'] = value
         # we iterate through the dico
         for key in dico:
             # the we iterate through the list of attributes
             for att in self.attributes:
+
                 # then when we fin an attributes that match with the key
                 if key == att:
                     # we can write the right value in the right entry

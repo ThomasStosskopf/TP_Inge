@@ -1,6 +1,5 @@
-Human,21,omnivore,2,Audrey
-Human,25,omnivore,2,Mohamed
-human,25,omnivore,2,Thomas
-human,22,omnivore,2,Joseph
-human,56,omnivore,2,Robert
-human,45,omnivore,2,Christophe
+human,11,omnivore,2,Ralph
+human,22,omnivore,2,Pierre
+human,22,omnivore,2,Rafi
+human,45,omnivore,2,Roger
+human,45,omnivore,2,Roger

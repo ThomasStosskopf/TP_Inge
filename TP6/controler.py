@@ -21,9 +21,6 @@ class Controller:
         self.view.display_label(self.model.get_dict_attr(value))
 
 
-    def control_give_dict(self, dico):
-        return self.model.get_dict_attr(dico)
-
 # utiliser le dictionnaire animal attribut avec sa valeur
 
     def add_animal(self, dict_animal):

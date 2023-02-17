@@ -29,10 +29,35 @@ class Model:
         """
         method to save animal in the file a.txt
         """
-        self.file.write("\n" + dict_animal["species"] + ","
-                        + dict_animal["age"] + "," + dict_animal["diet"]
-                        + "," + dict_animal["foot"]
-                        + "," + dict_animal["name"])
+        self.file.seek(0)  # Move the file cursor to the beginning of the file
+        lines = self.file.readlines()  # Read all lines from the file
+        # self.file.seek(0)  # Move the file cursor back to the beginning of the file
+        # self.file.truncate()  # Clear the file contents
+        for line in lines:
+            line_list = line.strip().split(',')
+            if line_list[-1] == dict_animal["name"]:
+                self.file.seek(0)  # Move the file cursor back to the beginning of the file
+                self.file.truncate()  # Clear the file contents
+                print("okay")
+
+                if line_list[-1] != dict_animal["name"]:
+                    self.file.write(line)
+
+                for elem in line_list:
+                    for key in dict_animal:
+                        if elem != dict_animal[key]:
+                            elem = dict_animal[key]
+                            print("bite")
+                            #self.file.write(line)
+
+                            # faire une boucle for pour iterer dans line_list et test selon les éléments de dict_animal
+                break
+            if line_list[-1] != dict_animal["name"]:
+
+                self.file.write("\n" + dict_animal["species"] + ","+ dict_animal["age"]
+                                + "," + dict_animal["diet"] + "," + dict_animal["foot"]
+                                + "," + dict_animal["name"])
+                break
 
     def delete_animal(self, name_to_delete):
         """
