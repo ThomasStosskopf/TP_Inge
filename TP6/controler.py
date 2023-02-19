@@ -24,8 +24,24 @@ class Controller:
 # utiliser le dictionnaire animal attribut avec sa valeur
 
     def add_animal(self, dict_animal):
-        """Method to save an animal in our dict"""
-        self.model.save(dict_animal)
+        """
+        Method to save/modify an animal in our dict
+        The controller chose the right model.py function to write into the file
+        """
+        # list of animal's names that are already in the file
+        list_actual_animals = self.model.get_name()
+
+        # verify if the name in the entry box is already in the list or not
+        # if it is, then we call the function from model to modify the line in the file
+        if dict_animal["name"] in list_actual_animals:
+            print("Animal ", dict_animal["name"], " Modified!")
+            self.model.modify_animal(dict_animal)
+
+        # if it is not, then it is a new animal, and we can just add it at the end of the file
+        if dict_animal["name"] not in list_actual_animals:
+            print("add animal")
+            self.model.save(dict_animal)
+
 
     def get_model_entries(self):
         """get the list of the attributes with the method in model"""

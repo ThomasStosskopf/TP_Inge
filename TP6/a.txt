@@ -1,5 +1,6 @@
-human,11,omnivore,2,Ralph
-human,22,omnivore,2,Pierre
+human,25,omnivore,2,Thomas
 human,22,omnivore,2,Rafi
-human,45,omnivore,2,Roger
-human,45,omnivore,2,Roger
+human,90,omnivore,2,Jean
+human,30,vegetarian,2,Pierre
+human,25,vegetarian,2,Jessica
+human,57,omnivore,2,Roger

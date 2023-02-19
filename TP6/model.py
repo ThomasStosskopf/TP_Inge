@@ -1,5 +1,5 @@
 # encoding : utf8
-"""model """
+"""model, used to write in the file a.txt """
 from animal import Animal
 
 class Model:
@@ -29,35 +29,27 @@ class Model:
         """
         method to save animal in the file a.txt
         """
-        self.file.seek(0)  # Move the file cursor to the beginning of the file
-        lines = self.file.readlines()  # Read all lines from the file
-        # self.file.seek(0)  # Move the file cursor back to the beginning of the file
-        # self.file.truncate()  # Clear the file contents
-        for line in lines:
-            line_list = line.strip().split(',')
-            if line_list[-1] == dict_animal["name"]:
-                self.file.seek(0)  # Move the file cursor back to the beginning of the file
-                self.file.truncate()  # Clear the file contents
-                print("okay")
-
-                if line_list[-1] != dict_animal["name"]:
-                    self.file.write(line)
-
-                for elem in line_list:
-                    for key in dict_animal:
-                        if elem != dict_animal[key]:
-                            elem = dict_animal[key]
-                            print("bite")
-                            #self.file.write(line)
-
-                            # faire une boucle for pour iterer dans line_list et test selon les éléments de dict_animal
-                break
-            if line_list[-1] != dict_animal["name"]:
-
-                self.file.write("\n" + dict_animal["species"] + ","+ dict_animal["age"]
+        self.file = open(self.filename, "r+", encoding='utf-8')
+        self.read_file()
+        self.file.write( dict_animal["species"] + ","+ dict_animal["age"]
                                 + "," + dict_animal["diet"] + "," + dict_animal["foot"]
                                 + "," + dict_animal["name"])
-                break
+        self.file.close() # close file so it can be saved in the file without closing the app
+
+    def modify_animal(self, dict_animal):
+        print("Okay")
+        # call the method to delete the right line
+        self.delete_animal(dict_animal["name"])
+        # reopen the file to write in it
+        self.file=open(self.filename, "r+", encoding='utf-8')
+        self.read_file()
+        # write back the line with the new informations
+        self.file.write("\n" + dict_animal["species"] + "," + dict_animal["age"]
+                                + "," + dict_animal["diet"] + "," + dict_animal["foot"]
+                                + "," + dict_animal["name"])
+        self.file.close()  # close file so it can be saved in the file without closing the app
+
+
 
     def delete_animal(self, name_to_delete):
         """
@@ -79,6 +71,8 @@ class Model:
             if line_list[-1] != name_to_delete:
                 self.file.write(line)  # Write the line back to the file if the
                                         # animal name does not match the specified name
+        self.file.close()  # close file so it can be saved in the file without closing the app
+
 
     def close(self):
         """
