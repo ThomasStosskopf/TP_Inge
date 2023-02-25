@@ -1,6 +1,20 @@
 human,25,omnivore,2,Thomas
-human,22,omnivore,2,Rafi
 human,90,omnivore,2,Jean
-human,30,vegetarian,2,Pierre
-human,25,vegetarian,2,Jessica
-human,57,omnivore,2,Roger
+human,25,omnivore,2,Nicolas
+human,56,omnivore,2,Jacque
+human,78,omnivore,2,George
+human,56,vegetarian,2,Jessica
+human,23,omnivore,2,Martin
+Tiger,5,carnivore,4,Tigrou
+Dragon,1120,carnivore,4,Alexstrasza
+Dragon,508,carnivore,4,Nefaria
+Dragon,552,carnivore,4,Onyxia
+Dragon,923,carnivore,4,Korialstrasz
+Dragon,2560,carnivore,4,Neltharion
+Orc,64,omnivore,2,Durotan
+Orc,75,omnivore,2,Gul'dan
+Tauren,40,omnivore,2,Baine Sabot-de-sang
+Orc,40,carnivore,2,Garrosh
+elf,2000,vegetarian,2,Malfurion
+human,45,omnivore,2,Arthas
+orc,20,omnivore,2,Grog

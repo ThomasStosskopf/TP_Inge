@@ -36,11 +36,13 @@ class Controller:
         if dict_animal["name"] in list_actual_animals:
             print("Animal ", dict_animal["name"], " Modified!")
             self.model.modify_animal(dict_animal)
+            self.view.message_modified()
 
         # if it is not, then it is a new animal, and we can just add it at the end of the file
         if dict_animal["name"] not in list_actual_animals:
             print("add animal")
             self.model.save(dict_animal)
+            self.view.message_add()
 
 
     def get_model_entries(self):
@@ -52,6 +54,7 @@ class Controller:
         method to quit the window
         """
         print("close app")
+        self.model.save_the_file()
         self.model.close()
         self.view.destroy()
 
@@ -67,6 +70,7 @@ class Controller:
         so we can give it to the model
         """
         self.model.delete_animal(name_to_delete)
+
 
 
 if __name__ == "__main__":

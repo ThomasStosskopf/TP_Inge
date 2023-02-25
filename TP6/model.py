@@ -31,7 +31,7 @@ class Model:
         """
         self.file = open(self.filename, "r+", encoding='utf-8')
         self.read_file()
-        self.file.write( dict_animal["species"] + ","+ dict_animal["age"]
+        self.file.write( "\n" + dict_animal["species"] + ","+ dict_animal["age"]
                                 + "," + dict_animal["diet"] + "," + dict_animal["foot"]
                                 + "," + dict_animal["name"])
         self.file.close() # close file so it can be saved in the file without closing the app
@@ -50,6 +50,14 @@ class Model:
         self.file.close()  # close file so it can be saved in the file without closing the app
 
 
+    def save_the_file(self):
+        """save the file without empty line between lines"""
+        with open(self.filename, "r+") as file_to_save:
+            contents = file_to_save.read()
+            contents = "\n".join(filter(lambda x: x.strip(), contents.split("\n")))
+            file_to_save.seek(0)
+            file_to_save.write(contents)
+            file_to_save.truncate()
 
     def delete_animal(self, name_to_delete):
         """
@@ -60,6 +68,8 @@ class Model:
             if key == name_to_delete:
                 del self.dico_animaux[key]
                 break
+        # open back the file
+        self.file = open(self.filename, "r+", encoding='utf-8')
 
         # delete in file txt
         self.file.seek(0)  # Move the file cursor to the beginning of the file

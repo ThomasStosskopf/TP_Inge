@@ -1,8 +1,13 @@
 # encoding : utf8
 """i dont know"""
 from tkinter import *
+from tkinter import messagebox
 
 class Application(Tk):
+    """
+    View part of the MVC. we create our window here with
+    all its elements
+    """
     def __init__(self, controller):
         """init view"""
         Tk.__init__(self)
@@ -23,10 +28,10 @@ class Application(Tk):
 
         # Liste box here
         self.listboxname = Listbox(self)
-        counter = 0
+        counter_name = 0
         for name in self.namelist:
-            counter += 1
-            self.listboxname.insert(counter, name)
+            counter_name += 1
+            self.listboxname.insert(counter_name, name)
 
         # entries box
         self.entries = {}
@@ -83,14 +88,29 @@ class Application(Tk):
         self.controller.quit_window() # use the method in controler.py to quit
 
     def add_animal(self):
+        """
+        Add an animal by searching the attributs the user wrote in
+        the entries box and give it to the controller with a dictionnary
+        """
         dict_animal = {}
         for key in self.entries:
             dict_animal[key] = self.entries[key].get()
             self.entries[key].delete(0, END) # delete text in the entries
         self.controller.add_animal(dict_animal)
+        self.listboxname.insert(END, dict_animal["name"])
 
 
-    def del_animal(self):
+
+    def del_animal(self) -> None:
+        """
+        Deletes an animal from a listbox and the associated controller's data.
+            When called, this method gets the name of the currently
+            selected animal in the listbox, deletes
+            it from the associated controller's data via the
+            `del_animal` method, and removes it from the
+            listbox. Additionally, it displays a message informing
+            the user that the animal has been deleted.
+            """
         delete_name = self.listboxname.get(ACTIVE)
         self.controller.del_animal(delete_name)
         # for loop to delete in the list box
@@ -98,10 +118,16 @@ class Application(Tk):
             if self.listboxname.get(i) == delete_name: # if the index is similar to the index
                                                         # of the item we want to delete
                 self.listboxname.delete(i)              # we can delete it in the listbox
+                messagebox.showinfo("Adding animal", message="The animal has been added.")
                 break
 
+    def message_add(self):
+        """method to show the message when an animal is added"""
+        messagebox.showinfo("Adding animal", message="The animal has been added.")
 
-
+    def message_modified(self):
+        """method to show the message when an animal is added"""
+        messagebox.showinfo("Animal Modification", message="The animal has been modified.")
 
     def view_window(self):
         """method tp show our window"""
@@ -109,21 +135,6 @@ class Application(Tk):
         self.mainloop()
 
 
-if __name__ == "__main__":
-    app = Application()
-    app.view_window()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# if __name__ == "__main__":
+    # app = Application()
+    # app.view_window()
