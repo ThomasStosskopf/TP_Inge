@@ -18,6 +18,7 @@ class Model:
         """
         method to read all animal in our file
         """
+        self.file = open(self.filename, "r+", encoding='utf-8')
         for line in self.file:
             line = line.strip()
             tab = line.split(",")
@@ -34,7 +35,7 @@ class Model:
         self.file.write( "\n" + dict_animal["species"] + ","+ dict_animal["age"]
                                 + "," + dict_animal["diet"] + "," + dict_animal["foot"]
                                 + "," + dict_animal["name"])
-        self.file.close() # close file so it can be saved in the file without closing the app
+        self.close() # close file so it can be saved in the file without closing the app
 
     def modify_animal(self, dict_animal):
         print("Okay")
@@ -47,7 +48,7 @@ class Model:
         self.file.write("\n" + dict_animal["species"] + "," + dict_animal["age"]
                                 + "," + dict_animal["diet"] + "," + dict_animal["foot"]
                                 + "," + dict_animal["name"])
-        self.file.close()  # close file so it can be saved in the file without closing the app
+        self.close()  # close file so it can be saved in the file without closing the app
 
 
     def save_the_file(self):
@@ -58,6 +59,7 @@ class Model:
             file_to_save.seek(0)
             file_to_save.write(contents)
             file_to_save.truncate()
+
 
     def delete_animal(self, name_to_delete):
         """
@@ -81,13 +83,14 @@ class Model:
             if line_list[-1] != name_to_delete:
                 self.file.write(line)  # Write the line back to the file if the
                                         # animal name does not match the specified name
-        self.file.close()  # close file so it can be saved in the file without closing the app
+        self.close()  # close file so it can be saved in the file without closing the app
 
 
     def close(self):
         """
         method to close the file
         """
+        self.save_the_file()
         self.file.close()
 
     def get_attributes(self) -> []:

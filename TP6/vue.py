@@ -111,6 +111,8 @@ class Application(Tk):
             listbox. Additionally, it displays a message informing
             the user that the animal has been deleted.
             """
+
+
         delete_name = self.listboxname.get(ACTIVE)
         self.controller.del_animal(delete_name)
         # for loop to delete in the list box
@@ -118,8 +120,14 @@ class Application(Tk):
             if self.listboxname.get(i) == delete_name: # if the index is similar to the index
                                                         # of the item we want to delete
                 self.listboxname.delete(i)              # we can delete it in the listbox
-                messagebox.showinfo("Adding animal", message="The animal has been added.")
-                break
+            messagebox.showinfo("Adding animal", message="The animal has been added.")
+            break
+        for key in self.entries:
+            self.entries[key].delete(0, END)  # delete text in the entries
+
+
+
+
 
     def message_add(self):
         """method to show the message when an animal is added"""

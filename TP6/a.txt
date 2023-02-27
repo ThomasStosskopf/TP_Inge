@@ -1,7 +1,5 @@
 human,25,omnivore,2,Thomas
-human,90,omnivore,2,Jean
 human,25,omnivore,2,Nicolas
-human,56,omnivore,2,Jacque
 human,78,omnivore,2,George
 human,56,vegetarian,2,Jessica
 human,23,omnivore,2,Martin
