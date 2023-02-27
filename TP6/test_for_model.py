@@ -1,12 +1,13 @@
 # encoding : utf8
-import unittest
-from model import Model
-from animal import Animal
 """
 Script to test the function of model.py
 """
+import unittest
+from model import Model
+from animal import Animal
 
-class Test_model(unittest.TestCase):
+
+class Testmodel(unittest.TestCase):
     """test case to test functions from model.py"""
     def setUp(self):
         """Setup a new Model instance and a new Animal instance"""
@@ -40,4 +41,3 @@ class Test_model(unittest.TestCase):
         dico_animaux = self.model.dico_animaux
         # Check that the animal was deleted from the file
         self.assertNotIn("Fido", dico_animaux)
-
