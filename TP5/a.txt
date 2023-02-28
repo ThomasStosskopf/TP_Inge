@@ -1,6 +1,5 @@
 human,25,omnivore,2,Thomas
 human,25,omnivore,2,Nicolas
-human,78,omnivore,2,George
 human,56,vegetarian,2,Jessica
 human,23,omnivore,2,Martin
 Tiger,5,carnivore,4,Tigrou
@@ -16,3 +15,4 @@ Orc,40,carnivore,2,Garrosh
 elf,2000,vegetarian,2,Malfurion
 human,45,omnivore,2,Arthas
 orc,20,omnivore,2,Grog
+human,40,omnivore,2,Jaina
